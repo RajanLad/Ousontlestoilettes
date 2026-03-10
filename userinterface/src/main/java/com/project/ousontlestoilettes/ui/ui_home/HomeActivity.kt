@@ -1,9 +1,11 @@
 package com.project.ousontlestoilettes.ui.ui_home
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -19,25 +21,22 @@ import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.maps.MapView
 
-class MainActivity : ComponentActivity() {
+class HomeActivity : ComponentActivity() {
     lateinit var mapView: MapView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //initializations
-        mapView = MapView(this)
+
 
         enableEdgeToEdge()
         setContent {
             OusontlestoilettesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // A surface container using the 'background' color from the theme
-                    Surface(
-                        modifier = Modifier.fillMaxSize().padding(innerPadding),
-                        color = MaterialTheme.colorScheme.background
-                    ) {
 
-                        HomeMapView(mapView = mapView)
-                    }
+
+
+
                 }
             }
         }
@@ -45,24 +44,40 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun HomeMapView(mapView: MapView) {
-    AndroidView(
-        modifier = Modifier.fillMaxSize(),
-        factory = { context ->
-            mapView.getMapAsync { map ->
+fun HomeMapView(context: Context,innerPadding: PaddingValues) {
+    var mapView = MapView(context)
+    Surface(
+        modifier = Modifier.fillMaxSize().padding(innerPadding),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        AndroidView(
+            modifier = Modifier.fillMaxSize(),
+            factory = { context ->
+                mapView.getMapAsync { map ->
 
 //                map.setStyle("https://demotiles.maplibre.or?g/style.json")
 
-                //Base map
-                map.setStyle("https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json")
-                //paris co ordinates : 48.856123042763045, 2.3454701293625657
-                map.cameraPosition = CameraPosition.Builder().target(LatLng(48.856123042763045, 2.3454701293625657)).zoom(11.0).build()
-            }
+                    //Base map
+                    map.setStyle("https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json")
+                    //paris co ordinates : 48.856123042763045, 2.3454701293625657
+                    map.cameraPosition = CameraPosition.Builder()
+                        .target(LatLng(48.856123042763045, 2.3454701293625657)).zoom(11.0).build()
+                }
 
-            mapView
-        }
-    )
+                mapView
+            }
+        )
+    }
 }
+
+//@Composable
+//fun UserScreen(
+//    viewModel: UserViewModel = hiltViewModel()
+//) {
+//    val state by viewModel.state.collectAsState()
+//
+//    Text(text = state.name)
+//}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

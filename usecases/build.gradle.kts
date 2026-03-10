@@ -1,21 +1,16 @@
 plugins {
-    kotlin("jvm") version "1.8.10" // or latest Kotlin version
+    kotlin("jvm")
 }
 
 //android {
-//    namespace = "com.example.usecases"
-//    compileSdk {
-//        version = release(36)
-//    }
+//    namespace = "com.example.data"
+//
+//    compileSdk = 36
 //
 //    defaultConfig {
-//        applicationId = "com.example.usecases"
-//        minSdk = 24
-//        targetSdk = 36
-//        versionCode = 1
-//        versionName = "1.0"
-//
+//        minSdk = 34
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        consumerProguardFiles("consumer-rules.pro")
 //    }
 //
 //    buildTypes {
@@ -27,6 +22,7 @@ plugins {
 //            )
 //        }
 //    }
+//
 //    compileOptions {
 //        sourceCompatibility = JavaVersion.VERSION_11
 //        targetCompatibility = JavaVersion.VERSION_11
@@ -34,6 +30,5 @@ plugins {
 //}
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0") // Coroutines for background work
-    testImplementation(libs.junit)
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 }

@@ -1,4 +1,4 @@
-package com.project.ousontlestoilettes
+package com.ousontlestoilettes
 
 import android.app.Application
 import org.maplibre.android.MapLibre

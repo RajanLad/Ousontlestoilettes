@@ -1,6 +1,7 @@
 package com.example.api_responses
 
-import com.example.models.ResultsItem
+
+import com.example.models.ToilettesPubliquesItem
 
 data class ToilettesPubliquesAPIResponse(val totalCount: Int = 0,
-                                         val results: List<ResultsItem>?)
+                                         val results: List<ToilettesPubliquesItem>?)

@@ -24,3 +24,4 @@ rootProject.name = "Ousontlestoilettes"
 include(":userinterface")
 include(":usecases")
 include(":data")
+include(":app")
