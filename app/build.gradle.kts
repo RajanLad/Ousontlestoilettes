@@ -33,8 +33,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -43,8 +43,12 @@ android {
 }
 
 kotlin {
+
+//    jvmToolchain(JavaVersion.VERSION_11) // Ensures KAPT, Kotlin compiler, and Gradle use the same JVM
+
+    jvmToolchain(17) // Use system JDK 17
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_11)
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
@@ -61,6 +65,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(libs.androidx.splashscreen)
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+
 
     implementation(libs.maplibre.android)
 

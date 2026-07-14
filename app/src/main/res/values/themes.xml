@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Ousontlestoilettes" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Ousontlestoilettes" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+
+
+    <!-- Splash Screen theme -->
+    <style name="Theme.SplashScreenOne" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
+        <!-- Disable the animated icon -->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+
+        <!-- Splash background color -->
+        <item name="android:windowSplashScreenBackground">@color/app_color_primary</item>
+
+        <item name="windowSplashScreenAnimationDuration">10</item>
+
+        <!-- Theme applied after splash -->
+        <item name="postSplashScreenTheme">@style/Theme.Ousontlestoilettes</item>
+
+
+
+    </style>
 </resources>

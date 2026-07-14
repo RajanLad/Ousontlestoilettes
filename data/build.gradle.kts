@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -28,17 +30,30 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlin {
+
+//    jvmToolchain(JavaVersion.VERSION_11) // Ensures KAPT, Kotlin compiler, and Gradle use the same JVM
+
+        jvmToolchain(17) // Use system JDK 17
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
     }
 }
 
 dependencies {
 
     implementation(project(":usecases"))
-
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-compiler:2.50")
+//
+//    implementation("com.google.dagger:hilt-android:2.50")
+//    kapt("com.google.dagger:hilt-compiler:2.50")
+//
+//    implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 }

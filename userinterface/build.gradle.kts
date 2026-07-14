@@ -30,8 +30,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
 
@@ -41,8 +41,9 @@ android {
 }
 
 kotlin {
+    jvmToolchain(17) // Use system JDK 17
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_11)
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
@@ -62,6 +63,9 @@ dependencies {
     implementation(libs.maplibre.android)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.navigation)
+
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
